@@ -20,7 +20,7 @@
 					<img src="{{asset('images/facadrenault.jpg')}}">
 				</div>
 
-				<a href="http://renault.oven-auto.ru" class="btn btn-warning btn-large btn-block">
+				<a href="http://renault.oven-auto.ru" class="btn btn-large btn-block btn-renault">
 					Автомобили в продаже
 				</a>
 			</div>
@@ -29,7 +29,7 @@
 				<div class="text-center py-1">
 						<img src="{{asset('images/facadlada.jpg')}}">
 				</div>
-				<a href="http://lada.oven-auto.ru" class="btn btn-dark btn-large btn-block">
+				<a href="http://lada.oven-auto.ru" class="btn btn-large btn-block btn-lada">
 					Автомобили в продаже
 				</a>
 			</div>
