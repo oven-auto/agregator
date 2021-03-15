@@ -37370,6 +37370,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 //     el: '#app',
 // });
 
+
+$(document).ready(function () {
+  $(document).on('click', '.navbar-collapse .nav-link', function () {
+    $('.navbar-collapse').removeClass('show');
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

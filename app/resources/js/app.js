@@ -30,3 +30,8 @@ require('./bootstrap');
 // const app = new Vue({
 //     el: '#app',
 // });
+$(document).ready(function(){
+	$(document).on('click','.navbar-collapse .nav-link',function(){
+		$('.navbar-collapse').removeClass('show')
+	})
+})

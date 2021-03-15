@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <div style="background: #333;color:#ddd;">
+        <div>
             @section('header')
                 @include('main.header')
             @show
@@ -48,7 +48,7 @@
         <div class="footer container-fluid py-3" style="background: #333; color: #ddd;">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-sx-12 col-sm-6">
                         2006-2021 © ООО «Фирма Овен-Авто». 
                     </div>
 
