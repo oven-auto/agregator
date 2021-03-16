@@ -39,7 +39,7 @@
             <div class="container py-3">
                 <div class="row">
                     <div class="col">
-                        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac2fca488e293632c690e765dab50541d78a6d14e9c4e42be850e1e9c2324a42f&amp;width=100%25&amp;height=349&amp;lang=ru_RU&amp;scroll=true"></script>
+                       <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac2fca488e293632c690e765dab50541d78a6d14e9c4e42be850e1e9c2324a42f&amp;width=100%25&amp;height=349&amp;lang=ru_RU&amp;scroll=true"></script>
                     </div>
                 </div>
             </div>
