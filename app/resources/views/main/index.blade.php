@@ -53,7 +53,7 @@
 					</div>
 				</div>
 			</div>
-
+			<div style="width: 100%;background: #ccc;height: 1px;" class="mt-3 d-block d-sm-none"></div>
 			<div class="col-xs-12 col-sm-6 ">
 				<a name="salolnlada"></a>
 				<div class="h5 mt-3">
