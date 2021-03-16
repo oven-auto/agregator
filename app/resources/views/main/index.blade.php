@@ -8,7 +8,7 @@
 				<div class="h4">
 					ОВЕН-АВТО – официальный дилер Renault и LADA в городе Сыктывкаре.
 				</div>
-				<div class="py-3 text-justify">
+				<div class="py-3">
 					Приглашаем Вас посетить наши дилерские центры в Сыктывкаре на Гаражной 1. Шоурумы наших автосалонов порадуют незабываемой атмосферой мира автомобилей, а наши специалисты постараются сделать все, чтобы оправдать Ваши ожидания.
 				</div>
 			</div>
@@ -34,7 +34,7 @@
 					<div class="col">
 						Отдел продаж
 					</div>
-					<div class="col">
+					<div class="col text-right">
 						8 (8212) 288 588
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 					<div class="col">
 						Сервисный центр
 					</div>
-					<div class="col">
+					<div class="col text-right">
 						8 (8212) 288 575
 					</div>
 				</div>
@@ -71,7 +71,7 @@
 					<div class="col">
 						Отдел продаж
 					</div>
-					<div class="col">
+					<div class="col text-right">
 						8 (8212) 239 235
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 					<div class="col">
 						Сервисный центр
 					</div>
-					<div class="col">
+					<div class="col  text-right">
 						8 (8212) 239 235
 					</div>
 				</div>

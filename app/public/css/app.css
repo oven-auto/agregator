@@ -10997,7 +10997,8 @@ a.text-dark:focus {
 
 .navbar-toggler {
   padding: 0px !important;
-  border-color: #343a40 !important;
+  border-color: transparent !important;
+  color: #333;
 }
 
 .big-font {
@@ -11009,10 +11010,14 @@ a.text-dark:focus {
 }
 
 .navbar-collapse .nav-link {
-  color: #fff;
+  color: #333;
   margin: 5px 0;
   font-size: 1.2rem;
   text-align: center;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #333 !important;
 }
 
 .navbar-clone {
@@ -11021,6 +11026,10 @@ a.text-dark:focus {
   left: 0px;
   width: 100%;
   z-index: 100;
+}
+
+.navbar {
+  background: #ddd;
 }
 
 @media screen and (max-width: 800px) {
@@ -11034,10 +11043,6 @@ a.text-dark:focus {
 
   body {
     font-size: 0.9rem;
-  }
-
-  .header {
-    padding-top: 40px !important;
   }
 
   .header-name {
