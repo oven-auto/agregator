@@ -18,7 +18,7 @@
 			<div class="col-xs-12 col-sm-6 ">
 				<a name="salonrenault"></a>
 				<div class="h5 mt-3">
-					Салон Renault
+					Дилерский центр Renault
 					
 				</div>
 
@@ -55,9 +55,9 @@
 			</div>
 
 			<div class="col-xs-12 col-sm-6 ">
-				<a name="saolnlada"></a>
+				<a name="salolnlada"></a>
 				<div class="h5 mt-3">
-					Салон Lada
+					Дилерский центр Lada
 					
 				</div>
 				<div class="text-center py-1 ">

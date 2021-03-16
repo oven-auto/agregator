@@ -34,4 +34,21 @@ $(document).ready(function(){
 	$(document).on('click','.navbar-collapse .nav-link',function(){
 		$('.navbar-collapse').removeClass('show')
 	})
+
+	$(document).scroll(function(){
+		var currenTop = $(this).scrollTop()
+		var nav = $('.navbar')
+
+		if(currenTop > nav.offset().top)
+		{
+			if($(document).find('.navbar-clone').length == 0)
+			{
+				var clone = nav.clone().addClass('navbar-clone')
+				$('body').append(clone)
+			}
+		}
+		else{
+			$('.navbar-clone').remove()
+		}
+	})
 })
