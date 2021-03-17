@@ -25,11 +25,11 @@
 }
 
 .btn-lada{
-	background:#495966;
-	color:#ddd;
+	background: rgb(247, 118, 31);
+	color:#fff;
 }
 .btn-lada:hover{
-	background:#333;
+	background:rgb(180, 118, 31);
 	color:#ddd;
 }
 
@@ -62,6 +62,8 @@
 .navbar-light .navbar-nav .nav-link{
 	color:#333 !important;
 }
+
+
 .navbar-clone{
 	position: fixed;
 	top:0px;
