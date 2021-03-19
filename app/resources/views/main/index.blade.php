@@ -52,6 +52,26 @@
 						г. Сыктывкар ул. Гаражная д.1 (въезд со стороны улицы Димитрова)
 					</div>
 				</div>
+
+				<div class="row text-center pt-5 pb-4">
+					<div class="col" style="">
+						<div type="button" class="callback-bt">
+						    <a class="text-call" href="tel: +78212288588">
+						        <i class="fa fa-phone"></i>
+						        <span>Заказать<br>звонок</span>
+						    </a>
+						</div>
+					</div>
+
+					<div class="col">
+						<div type="button" class="email-bt" data-url="{{route('ajax.show.modal',['brand'=>'renault'])}}">
+						    <div class="text-call">
+						        <i class="fa fa-envelope" aria-hidden="true"></i>
+						        <span>Обратная<br>связь</span>
+						    </div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="col d-block d-sm-none"><div style="width: 100%;background: #ddd;height: 1px;" class="mt-3 "></div></div>
 			<div class="col-xs-12 col-sm-6 ">
@@ -89,9 +109,33 @@
 						г. Сыктывкар ул. Гаражная д.1 (въезд со стороны улицы Гаражная)
 					</div>
 				</div>
+
+				<div class="row text-center pt-5 pb-4">
+					<div class="col" style="">
+						<div type="button" class="callback-bt">
+						    <a class="text-call" href="tel: +78212288588">
+						        <i class="fa fa-phone"></i>
+						        <span>Заказать<br>звонок</span>
+						    </a>
+						</div>
+					</div>
+
+					<div class="col">
+						<div type="button" class="email-bt" data-url="{{route('ajax.show.modal',['brand'=>'lada'])}}">
+						    <div class="text-call">
+						        <i class="fa fa-envelope" aria-hidden="true"></i>
+						        <span>Обратная<br>связь</span>
+						    </div>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
+	</div>
 
+
+	<div class="modal" tabindex="-1" role="dialog">
 	</div>
 @endsection
 

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@index');
+Route::get('/ajax/get/modal/{brand}', 'MainController@showmodal')->name('ajax.show.modal');
+Route::post('/ajax/send/mail','MainController@sendmail')->name('ajax.send.mail');
 
 Auth::routes();
 
@@ -21,4 +23,4 @@ Auth::routes();
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

@@ -3,11 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="description" content='Овен-Авто официальный дилер Renault и Lada в республике Коми. Всегда большой выбор автомобилей на складе.'/>
+    <meta name="keywords" content="Овен-Авто купить в сыктывкаре Renault Lada официальный дилер автосалон новый автомобиль" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Овен-Авто') }}</title>
+    <title>{{ config('app.name', 'Овен-Авто дилер Renault и Lada в Сыктывкаре') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -18,6 +19,8 @@
     <link rel="icon" type="image/png" href="{{asset('images/fav.png')}}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
 </head>
 <body>
     <div id="app">

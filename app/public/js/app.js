@@ -37343,6 +37343,12 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -37371,6 +37377,57 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 // });
 
 
+function maskPhone(selector) {
+  var masked = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '+7 (___) ___-__-__';
+  var elems = document.querySelectorAll(selector);
+
+  function mask(event) {
+    var keyCode = event.keyCode;
+    var template = masked,
+        def = template.replace(/\D/g, ""),
+        val = this.value.replace(/\D/g, "");
+    console.log(template);
+    var i = 0,
+        newValue = template.replace(/[_\d]/g, function (a) {
+      return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
+    });
+    i = newValue.indexOf("_");
+
+    if (i !== -1) {
+      newValue = newValue.slice(0, i);
+    }
+
+    var reg = template.substr(0, this.value.length).replace(/_+/g, function (a) {
+      return "\\d{1," + a.length + "}";
+    }).replace(/[+()]/g, "\\$&");
+    reg = new RegExp("^" + reg + "$");
+
+    if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
+      this.value = newValue;
+    }
+
+    if (event.type === "blur" && this.value.length < 5) {
+      this.value = "";
+    }
+  }
+
+  var _iterator = _createForOfIteratorHelper(elems),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var elem = _step.value;
+      elem.addEventListener("input", mask);
+      elem.addEventListener("focus", mask);
+      elem.addEventListener("blur", mask);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+}
+
 $(document).ready(function () {
   $(document).on('click', '.navbar-collapse .nav-link', function () {
     $('.navbar-collapse').removeClass('show');
@@ -37386,6 +37443,79 @@ $(document).ready(function () {
       }
     } else {
       $('.navbar-clone').remove();
+    }
+  });
+  $(document).on('click', '.email-bt', function () {
+    var modal = $('.modal');
+    var url = $(this).attr('data-url');
+    axios(url).then(function (response) {
+      modal.html(response.data.view);
+      modal.modal('show');
+    })["catch"](function (error) {
+      console.log(error);
+      modal.html('<div class="h5">Ошибка, попробуйте позже</div>');
+    });
+  });
+  $(document).on('click', '.checkbox-span', function () {
+    var me = $(this);
+    var checkbox = me.find('input');
+    var send = me.closest('.modal').find('.send');
+
+    if (checkbox.prop('checked') == true) {
+      checkbox.prop('checked', false);
+      me.removeClass('check-on');
+      send.addClass('disabled');
+    } else {
+      checkbox.prop('checked', true);
+      me.addClass('check-on');
+      send.removeClass('disabled');
+    }
+  });
+  $(document).on('input', '.modal .data-control', function () {
+    $(this).closest('.input-parent').find('.message').html('');
+  });
+  $(document).on('click', '.send', function () {
+    var me = $(this);
+    var modal = me.closest('.modal');
+    var checkbox = me.closest('.modal').find('.soglasie-block').find('input');
+    var errorCount = 0;
+    var url = me.attr('data-url');
+    var parameters = new Map();
+
+    if (!me.hasClass('disabled') || checkbox.prop('checked') == true) {
+      modal.find('input, textarea').each(function () {
+        var val = $(this).val();
+        if (val == '') errorCount++;
+
+        if ($(this).attr('name') == 'username' && val == '') {
+          $(this).closest('.input-parent').find('.message').html('Укажите имя пользователя');
+        }
+
+        if ($(this).attr('name') == 'userphone' && val == '') {
+          $(this).closest('.input-parent').find('.message').html('Укажите телефон');
+        }
+
+        if ($(this).attr('name') == 'userquestion' && val == '') {
+          $(this).closest('.input-parent').find('.message').html('Укажите вопрос');
+        }
+
+        parameters[$(this).attr('name')] = val;
+      });
+
+      if (errorCount == 0) {
+        axios.post(url, parameters).then(function (response) {
+          console.log(response.data);
+        })["catch"](function (errors) {
+          if (errors.response.data) {
+            for (var key in errors.response.data.errors) {
+              for (var i in errors.response.data.errors[key]) {
+                console.log(key);
+                $('[name="' + key + '"]').closest('.input-parent').find('.message').append('<div>' + errors.response.data.errors[key][i] + '</div>');
+              }
+            }
+          }
+        });
+      }
     }
   });
 });
