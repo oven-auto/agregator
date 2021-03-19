@@ -53,7 +53,7 @@
 					</div>
 				</div>
 
-				<div class="row text-center pt-5 pb-4">
+				<div class="row text-center pt-5 pb-4 d-flex d-sm-none">
 					<div class="col" style="">
 						<div type="button" class="callback-bt">
 						    <a class="text-call" href="tel: +78212288588">
@@ -110,7 +110,7 @@
 					</div>
 				</div>
 
-				<div class="row text-center pt-5 pb-4">
+				<div class="row text-center pt-5 pb-4  d-flex d-sm-none">
 					<div class="col" style="">
 						<div type="button" class="callback-bt">
 						    <a class="text-call" href="tel: +78212288588">

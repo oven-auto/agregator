@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Овен-Авто дилер Renault и Lada в Сыктывкаре') }}</title>
+    <title>Овен-Авто дилер Renault и Lada в Сыктывкаре</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
