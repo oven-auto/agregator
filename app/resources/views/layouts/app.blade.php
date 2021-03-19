@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content='Овен-Авто официальный дилер Renault и Lada в республике Коми. Всегда большой выбор автомобилей на складе.'/>
-    <meta name="keywords" content="Овен-Авто купить в сыктывкаре Renault Lada официальный дилер автосалон новый автомобиль" />
+    <meta name="keywords" content="Овен Авто купить в сыктывкаре Renault Lada официальный дилер автосалон новый автомобиль цена сайт заказать лада рено oven auto" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
