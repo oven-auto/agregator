@@ -75,7 +75,7 @@
 			</div>
 			<div class="col d-block d-sm-none"><div style="width: 100%;background: #ddd;height: 1px;" class="mt-3 "></div></div>
 			<div class="col-xs-12 col-sm-6 ">
-				<a name="salolnlada"></a>
+				<a name="salonlada"></a>
 				<div class="h5 mt-3">
 					Дилерский центр Lada
 					
