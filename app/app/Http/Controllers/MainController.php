@@ -25,3 +25,13 @@ class MainController extends Controller
     	
     }
 }
+
+
+/*<IfModule mod_rewrite.c>    
+Options +FollowSymLinks
+RewriteEngine on     
+RewriteRule ^(.*)$ app/public/$1 [L]     
+RewriteCond %{REQUEST_FILENAME} !-d     
+RewriteCond %{REQUEST_FILENAME} !-f     
+RewriteRule ^ index.php [L] 
+</IfModule>*/
