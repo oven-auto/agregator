@@ -110,7 +110,7 @@
 						г. Сыктывкар ул. Гаражная д.1 (въезд со стороны улицы Гаражная)
 					</div>
 				</div>
-
+				
 				<div class="row text-center pt-5 pb-4  d-flex d-sm-none">
 					<div class="col" style="">
 						<div type="" class="callback-bt">

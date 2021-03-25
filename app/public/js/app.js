@@ -37343,18 +37343,14 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window.Vue = require('vue');
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./maskedinput */ "./resources/js/maskedinput.js"); // window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your
@@ -37376,57 +37372,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window
 //     el: '#app',
 // });
 
-
-function maskPhone(selector) {
-  var masked = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '+7 (___) ___-__-__';
-  var elems = document.querySelectorAll(selector);
-
-  function mask(event) {
-    var keyCode = event.keyCode;
-    var template = masked,
-        def = template.replace(/\D/g, ""),
-        val = this.value.replace(/\D/g, "");
-    console.log(template);
-    var i = 0,
-        newValue = template.replace(/[_\d]/g, function (a) {
-      return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
-    });
-    i = newValue.indexOf("_");
-
-    if (i !== -1) {
-      newValue = newValue.slice(0, i);
-    }
-
-    var reg = template.substr(0, this.value.length).replace(/_+/g, function (a) {
-      return "\\d{1," + a.length + "}";
-    }).replace(/[+()]/g, "\\$&");
-    reg = new RegExp("^" + reg + "$");
-
-    if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
-      this.value = newValue;
-    }
-
-    if (event.type === "blur" && this.value.length < 5) {
-      this.value = "";
-    }
-  }
-
-  var _iterator = _createForOfIteratorHelper(elems),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var elem = _step.value;
-      elem.addEventListener("input", mask);
-      elem.addEventListener("focus", mask);
-      elem.addEventListener("blur", mask);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-}
 
 $(document).ready(function () {
   $(document).on('click', '.navbar-collapse .nav-link', function () {
@@ -37451,6 +37396,7 @@ $(document).ready(function () {
     axios(url).then(function (response) {
       modal.html(response.data.view);
       modal.modal('show');
+      $("#userphone").mask("8(999) 999-9999");
     })["catch"](function (error) {
       console.log(error);
       modal.html('<div class="h5">Ошибка, попробуйте позже</div>');
@@ -37499,7 +37445,9 @@ $(document).ready(function () {
           $(this).closest('.input-parent').find('.message').html('Укажите вопрос');
         }
 
+        if ($(this).attr('name') == 'userphone') val = val.replace(/[^+\d]/g, '');
         parameters[$(this).attr('name')] = val;
+        console.log(parameters);
       });
 
       if (errorCount == 0) {
@@ -37564,6 +37512,261 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/maskedinput.js":
+/*!*************************************!*\
+  !*** ./resources/js/maskedinput.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+/*
+    jQuery Masked Input Plugin
+    Copyright (c) 2007 - 2015 Josh Bush (digitalbush.com)
+    Licensed under the MIT license (http://digitalbush.com/projects/masked-input-plugin/#license)
+    Version: 1.4.1
+*/
+!function (a) {
+   true ? !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_FACTORY__ = (a),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
+}(function (a) {
+  var b,
+      c = navigator.userAgent,
+      d = /iphone/i.test(c),
+      e = /chrome/i.test(c),
+      f = /android/i.test(c);
+  a.mask = {
+    definitions: {
+      9: "[0-9]",
+      a: "[A-Za-z]",
+      "*": "[A-Za-z0-9]"
+    },
+    autoclear: !0,
+    dataName: "rawMaskFn",
+    placeholder: "_"
+  }, a.fn.extend({
+    caret: function caret(a, b) {
+      var c;
+      if (0 !== this.length && !this.is(":hidden")) return "number" == typeof a ? (b = "number" == typeof b ? b : a, this.each(function () {
+        this.setSelectionRange ? this.setSelectionRange(a, b) : this.createTextRange && (c = this.createTextRange(), c.collapse(!0), c.moveEnd("character", b), c.moveStart("character", a), c.select());
+      })) : (this[0].setSelectionRange ? (a = this[0].selectionStart, b = this[0].selectionEnd) : document.selection && document.selection.createRange && (c = document.selection.createRange(), a = 0 - c.duplicate().moveStart("character", -1e5), b = a + c.text.length), {
+        begin: a,
+        end: b
+      });
+    },
+    unmask: function unmask() {
+      return this.trigger("unmask");
+    },
+    mask: function mask(c, g) {
+      var h, i, j, k, l, m, n, o;
+
+      if (!c && this.length > 0) {
+        h = a(this[0]);
+        var p = h.data(a.mask.dataName);
+        return p ? p() : void 0;
+      }
+
+      return g = a.extend({
+        autoclear: a.mask.autoclear,
+        placeholder: a.mask.placeholder,
+        completed: null
+      }, g), i = a.mask.definitions, j = [], k = n = c.length, l = null, a.each(c.split(""), function (a, b) {
+        "?" == b ? (n--, k = a) : i[b] ? (j.push(new RegExp(i[b])), null === l && (l = j.length - 1), k > a && (m = j.length - 1)) : j.push(null);
+      }), this.trigger("unmask").each(function () {
+        function h() {
+          if (g.completed) {
+            for (var a = l; m >= a; a++) {
+              if (j[a] && C[a] === p(a)) return;
+            }
+
+            g.completed.call(B);
+          }
+        }
+
+        function p(a) {
+          return g.placeholder.charAt(a < g.placeholder.length ? a : 0);
+        }
+
+        function q(a) {
+          for (; ++a < n && !j[a];) {
+            ;
+          }
+
+          return a;
+        }
+
+        function r(a) {
+          for (; --a >= 0 && !j[a];) {
+            ;
+          }
+
+          return a;
+        }
+
+        function s(a, b) {
+          var c, d;
+
+          if (!(0 > a)) {
+            for (c = a, d = q(b); n > c; c++) {
+              if (j[c]) {
+                if (!(n > d && j[c].test(C[d]))) break;
+                C[c] = C[d], C[d] = p(d), d = q(d);
+              }
+            }
+
+            z(), B.caret(Math.max(l, a));
+          }
+        }
+
+        function t(a) {
+          var b, c, d, e;
+
+          for (b = a, c = p(a); n > b; b++) {
+            if (j[b]) {
+              if (d = q(b), e = C[b], C[b] = c, !(n > d && j[d].test(e))) break;
+              c = e;
+            }
+          }
+        }
+
+        function u() {
+          var a = B.val(),
+              b = B.caret();
+
+          if (o && o.length && o.length > a.length) {
+            for (A(!0); b.begin > 0 && !j[b.begin - 1];) {
+              b.begin--;
+            }
+
+            if (0 === b.begin) for (; b.begin < l && !j[b.begin];) {
+              b.begin++;
+            }
+            B.caret(b.begin, b.begin);
+          } else {
+            for (A(!0); b.begin < n && !j[b.begin];) {
+              b.begin++;
+            }
+
+            B.caret(b.begin, b.begin);
+          }
+
+          h();
+        }
+
+        function v() {
+          A(), B.val() != E && B.change();
+        }
+
+        function w(a) {
+          if (!B.prop("readonly")) {
+            var b,
+                c,
+                e,
+                f = a.which || a.keyCode;
+            o = B.val(), 8 === f || 46 === f || d && 127 === f ? (b = B.caret(), c = b.begin, e = b.end, e - c === 0 && (c = 46 !== f ? r(c) : e = q(c - 1), e = 46 === f ? q(e) : e), y(c, e), s(c, e - 1), a.preventDefault()) : 13 === f ? v.call(this, a) : 27 === f && (B.val(E), B.caret(0, A()), a.preventDefault());
+          }
+        }
+
+        function x(b) {
+          if (!B.prop("readonly")) {
+            var c,
+                d,
+                e,
+                g = b.which || b.keyCode,
+                i = B.caret();
+
+            if (!(b.ctrlKey || b.altKey || b.metaKey || 32 > g) && g && 13 !== g) {
+              if (i.end - i.begin !== 0 && (y(i.begin, i.end), s(i.begin, i.end - 1)), c = q(i.begin - 1), n > c && (d = String.fromCharCode(g), j[c].test(d))) {
+                if (t(c), C[c] = d, z(), e = q(c), f) {
+                  var k = function k() {
+                    a.proxy(a.fn.caret, B, e)();
+                  };
+
+                  setTimeout(k, 0);
+                } else B.caret(e);
+
+                i.begin <= m && h();
+              }
+
+              b.preventDefault();
+            }
+          }
+        }
+
+        function y(a, b) {
+          var c;
+
+          for (c = a; b > c && n > c; c++) {
+            j[c] && (C[c] = p(c));
+          }
+        }
+
+        function z() {
+          B.val(C.join(""));
+        }
+
+        function A(a) {
+          var b,
+              c,
+              d,
+              e = B.val(),
+              f = -1;
+
+          for (b = 0, d = 0; n > b; b++) {
+            if (j[b]) {
+              for (C[b] = p(b); d++ < e.length;) {
+                if (c = e.charAt(d - 1), j[b].test(c)) {
+                  C[b] = c, f = b;
+                  break;
+                }
+              }
+
+              if (d > e.length) {
+                y(b + 1, n);
+                break;
+              }
+            } else C[b] === e.charAt(d) && d++, k > b && (f = b);
+          }
+
+          return a ? z() : k > f + 1 ? g.autoclear || C.join("") === D ? (B.val() && B.val(""), y(0, n)) : z() : (z(), B.val(B.val().substring(0, f + 1))), k ? b : l;
+        }
+
+        var B = a(this),
+            C = a.map(c.split(""), function (a, b) {
+          return "?" != a ? i[a] ? p(b) : a : void 0;
+        }),
+            D = C.join(""),
+            E = B.val();
+        B.data(a.mask.dataName, function () {
+          return a.map(C, function (a, b) {
+            return j[b] && a != p(b) ? a : null;
+          }).join("");
+        }), B.one("unmask", function () {
+          B.off(".mask").removeData(a.mask.dataName);
+        }).on("focus.mask", function () {
+          if (!B.prop("readonly")) {
+            clearTimeout(b);
+            var a;
+            E = B.val(), a = A(), b = setTimeout(function () {
+              B.get(0) === document.activeElement && (z(), a == c.replace("?", "").length ? B.caret(0, a) : B.caret(a));
+            }, 10);
+          }
+        }).on("blur.mask", v).on("keydown.mask", w).on("keypress.mask", x).on("input.mask paste.mask", function () {
+          B.prop("readonly") || setTimeout(function () {
+            var a = A(!0);
+            B.caret(a), h();
+          }, 0);
+        }), e && f && B.off("input.mask").on("input.mask", u), A();
+      });
+    }
+  });
+});
 
 /***/ }),
 

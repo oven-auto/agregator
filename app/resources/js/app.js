@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-
+require('./maskedinput');
 // window.Vue = require('vue');
 
 /**
@@ -31,44 +31,7 @@ require('./bootstrap');
 //     el: '#app',
 // });
 
-function maskPhone(selector, masked = '+7 (___) ___-__-__') {
-const elems = document.querySelectorAll(selector);
 
-function mask(event) {
-	const keyCode = event.keyCode;
-	const template = masked,
-		def = template.replace(/\D/g, ""),
-		val = this.value.replace(/\D/g, "");
-	console.log(template);
-	let i = 0,
-		newValue = template.replace(/[_\d]/g, function (a) {
-			return i < val.length ? val.charAt(i++) || def.charAt(i) : a;
-		});
-	i = newValue.indexOf("_");
-	if (i !== -1) {
-		newValue = newValue.slice(0, i);
-	}
-	let reg = template.substr(0, this.value.length).replace(/_+/g,
-		function (a) {
-			return "\\d{1," + a.length + "}";
-		}).replace(/[+()]/g, "\\$&");
-	reg = new RegExp("^" + reg + "$");
-	if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
-		this.value = newValue;
-	}
-	if (event.type === "blur" && this.value.length < 5) {
-		this.value = "";
-	}
-
-}
-
-for (const elem of elems) {
-	elem.addEventListener("input", mask);
-	elem.addEventListener("focus", mask);
-	elem.addEventListener("blur", mask);
-}
-
-}
 
 
 $(document).ready(function(){
@@ -99,6 +62,7 @@ $(document).ready(function(){
 		axios(url).then(function(response){
 			modal.html(response.data.view)
 			modal.modal('show')
+			$("#userphone").mask("8(999) 999-9999")
 		}).catch(function(error){
 			console.log(error)
 			modal.html('<div class="h5">Ошибка, попробуйте позже</div>')
@@ -139,6 +103,7 @@ $(document).ready(function(){
 		{
 			modal.find('input, textarea').each(function(){
 				var val = $(this).val()
+
 				if(val == '')
 					errorCount++
 				if($(this).attr('name')=='username' && val == '')
@@ -156,7 +121,11 @@ $(document).ready(function(){
 					$(this).closest('.input-parent').find('.message').html('Укажите вопрос')
 					
 				}
+				if($(this).attr('name')=='userphone')
+					val = val.replace(/[^+\d]/g, '')
+
 				parameters[$(this).attr('name')] = val
+				console.log(parameters)
 			})
 			
 			if(errorCount == 0)
@@ -181,6 +150,10 @@ $(document).ready(function(){
 			}
 		}
 	})
+
+
+  
+
 
 
 })

@@ -25,7 +25,7 @@ class SendMailRequest extends FormRequest
     {
         return [
             'username'=>'required|min:2|max:30',
-            'userphone'=>'required|min:11|max:11|numeric',
+            'userphone'=>'required|digits:11|numeric',
             'userquestion'=>'required|min:10|max:300'
         ];
     }
@@ -38,8 +38,8 @@ class SendMailRequest extends FormRequest
             'userquestion.max'  => 'Имя максимум 2 символа',
 
             'userphone.required'  => 'Телефон обязательное поле',
-            'userphone.min'  => 'Телефон 11 символов',
-            'userphone.max'  => 'Телефон 11 символов',
+            'userphone.digits'  => 'Телефон 11 символов',
+            // 'userphone.max'  => 'Телефон max 11 символов',
             'userphone.numeric'  => 'Телефон может состоять только из цифр',
 
             'userquestion.required'  => 'Вопрос обязательное поле',
