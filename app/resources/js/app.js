@@ -131,7 +131,7 @@ $(document).ready(function(){
 			if(errorCount == 0)
 			{
 				axios.post(url,parameters).then(function(response){
-					console.log(response.data)
+					modal.html(response.data.view)
 				}).catch(function(errors){
 					
 					if(errors.response.data)

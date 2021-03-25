@@ -27,8 +27,8 @@ class MainController extends Controller
     	$question = $request->get('userquestion');
 
     	$to_name = 'OvenAvto';
-		$to_email = 'wanokazak1990@yandex.ru';
-		
+		$to_email = 'advs@oven-auto.ru';
+
 		$data['name'] =$name;
 		$data['phone'] = sprintf("%s (%s) %s-%s-%s",
 			substr($phone, 0, 1),
@@ -43,6 +43,11 @@ class MainController extends Controller
 		    $message->to($to_email, $to_name)->subject('Заявка с сайта oven-auto.ru');
 		    $message->from('oit@oven-auto.ru','Сайт oven-auto.ru');
 		});
+		$message = 'Ваша заявка принята.';
+		return response()->json([
+			'status'=>1,
+			'view'=>view('message',compact('message'))->render()
+		]);
     }
 }
 
