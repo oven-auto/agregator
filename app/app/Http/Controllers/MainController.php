@@ -9,7 +9,9 @@ class MainController extends Controller
 {
     public function index()
     {
-    	return view('main.index');
+    	$actionLinks = json_decode(file_get_contents('http://promo.oven-auto.ru/content/publicaction'));
+    	
+    	return view('main.index',compact('actionLinks'));
     }
 
     public function showmodal(Request $request, $brand)

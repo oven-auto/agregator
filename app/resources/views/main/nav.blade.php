@@ -13,6 +13,15 @@
 		      <li class="nav-item">
 		        <a class="nav-link" href="#salonlada" style="">Автосалон Lada</a>
 		      </li>
+		      @if(isset($actionLinks) && count($actionLinks))
+		      	@foreach($actionLinks as $itemLink)
+		      		<li class="nav-item">
+				        <a target="_blank" class="nav-link" href="http://promo.oven-auto.ru/content/view?id={{$itemLink->id}}" style="">
+				        	{{$itemLink->name}}
+				        </a>
+				    </li>
+		      	@endforeach
+		      @endif
 		    </ul>
 		  </div>
 		</div>
