@@ -10,7 +10,8 @@ class MainController extends Controller
     public function index()
     {
     	$actionLinks = json_decode(file_get_contents('http://promo.oven-auto.ru/content/publicaction'));
-    	
+    	$actionLinks = (Array) $actionLinks;
+        
     	return view('main.index',compact('actionLinks'));
     }
 
