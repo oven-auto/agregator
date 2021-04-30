@@ -12,10 +12,10 @@
 		          Автосалон Renault
 		        </a>
 		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item" href="http://www.renault.oven-auto.ru/content/availablelist">Автомобили в продаже</a>
+		          <a class="dropdown-item text-left" href="http://www.renault.oven-auto.ru/content/availablelist">Автомобили в продаже</a>
 		          @if(isset($actionLinks) && isset($actionLinks[1]))
 		          	@foreach($actionLinks[1] as $itemRenalt)
-		          	<a target="_blank" class="nav-link" href="http://promo.oven-auto.ru/content/view?id={{$itemRenalt->id}}" style="">
+		          	<a target="_blank" class="dropdown-item text-left" href="http://promo.oven-auto.ru/content/view?id={{$itemRenalt->id}}" style="">
 			        	{{$itemRenalt->name}}
 			        </a>
 		          	@endforeach
@@ -31,7 +31,7 @@
 		          <a class="dropdown-item" href="https://oven-auto.lada.ru/ds/cars/">Автомобили в продаже</a>
 		          @if(isset($actionLinks) && isset($actionLinks[2]))
 		          	@foreach($actionLinks[2] as $itemRenalt)
-		          	<a target="_blank" class="nav-link" href="http://promo.oven-auto.ru/content/view?id={{$itemRenalt->id}}" style="">
+		          	<a target="_blank" class="dropdown-item text-left" href="http://promo.oven-auto.ru/content/view?id={{$itemRenalt->id}}" style="">
 			        	{{$itemRenalt->name}}
 			        </a>
 		          	@endforeach
