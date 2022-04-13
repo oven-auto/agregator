@@ -111,7 +111,7 @@
 					</div>
 				</div>
 
-				<div class="row text-center pt-5 pb-4  d-flex">
+				<div class="row text-center pt-5 pb-4  d-flex d-sm-none">
 					<div class="col" style="">
 						<div type="" class="callback-bt">
 						    <a class="text-call" href="tel: +78212288588">
