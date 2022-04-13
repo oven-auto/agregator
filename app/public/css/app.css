@@ -14223,28 +14223,6 @@ a.text-dark:focus {
   font-family: "montserrat", Arial, Helvetica, sans-serif;
 }
 
-.callback-bt .text-call:hover span {
-  opacity: 1;
-  font-size: 11px;
-}
-
-.callback-bt:hover i {
-  display: none;
-}
-
-.callback-bt:hover {
-  z-index: 1;
-  background: #fff;
-  color: transparent;
-  transition: 0.3s;
-}
-
-.callback-bt:hover i {
-  color: #38a3fd;
-  font-size: 40px;
-  transition: 0.3s;
-}
-
 .callback-bt i {
   color: #fff;
   font-size: 34px;
@@ -14476,27 +14454,6 @@ a.text-dark:focus {
   text-transform: uppercase;
   transition: opacity 0.3s linear;
   font-family: "montserrat", Arial, Helvetica, sans-serif;
-}
-
-.email-bt .text-call:hover span {
-  opacity: 1;
-  font-size: 11px;
-}
-
-.email-bt:hover i {
-  display: none;
-}
-
-.email-bt:hover {
-  z-index: 1;
-  background: #fff;
-  transition: 0.3s;
-}
-
-.email-bt:hover i {
-  color: #38a3fd;
-  font-size: 40px;
-  transition: 0.3s;
 }
 
 .email-bt i {

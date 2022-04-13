@@ -26,16 +26,16 @@ class SendMailRequest extends FormRequest
         return [
             'username'=>'required|min:2|max:30',
             'userphone'=>'required|digits:11|numeric',
-            'userquestion'=>'required|min:10|max:300'
+            'userquestion'=>'required|min:4|max:300'
         ];
     }
 
     public function messages()
     {
         return [
-            'username.required' => 'Имя обязательное условие',
+            'username.required' => 'Имя обязательное поле',
             'username.min'  => 'Имя минимум 2 символа',
-            'userquestion.max'  => 'Имя максимум 2 символа',
+            'username.max'  => 'Имя максимум 30 символов',
 
             'userphone.required'  => 'Телефон обязательное поле',
             'userphone.digits'  => 'Телефон 11 символов',
@@ -43,7 +43,7 @@ class SendMailRequest extends FormRequest
             'userphone.numeric'  => 'Телефон может состоять только из цифр',
 
             'userquestion.required'  => 'Вопрос обязательное поле',
-            'userquestion.min'  => 'Вопрос максимум 10 символов',
+            'userquestion.min'  => 'Вопрос максимум 4 символов',
             'userquestion.max'  => 'Вопрос максимум 300 символа',
         ];
     }

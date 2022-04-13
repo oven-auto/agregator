@@ -105,13 +105,13 @@
 					</div>
 				</div>
 				<div class="row pt-3">
-					
+
 					<div class="col">
 						г. Сыктывкар ул. Гаражная д.1 (въезд со стороны улицы Гаражная)
 					</div>
 				</div>
-				
-				<div class="row text-center pt-5 pb-4  d-flex d-sm-none">
+
+				<div class="row text-center pt-5 pb-4  d-flex">
 					<div class="col" style="">
 						<div type="" class="callback-bt">
 						    <a class="text-call" href="tel: +78212288588">

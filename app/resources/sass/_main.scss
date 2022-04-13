@@ -51,7 +51,7 @@
 
 .medium-font{
 	font-size: 1rem;
-}	
+}
 
 .navbar-collapse .nav-link{
 	color: #333;
@@ -85,7 +85,7 @@
 		font-size: 0.9rem;
 	}
 	.header{
-		
+
 	}
 	.header-name{
 		font-size: 1rem;
@@ -95,14 +95,14 @@
 		font-size: 0.9rem;
 		text-align: center;
 	}
-	
+
 	.big-font{
 		font-size: 1rem;
 	}
 
 	.medium-font{
 		font-size: 0.9rem;
-	}	
+	}
 }
 
 
@@ -133,7 +133,7 @@
     /*text-transform: uppercase;*/
     cursor: pointer;
     overflow: hidden;
-    
+
     -webkit-transition: ease 0.3s;
     transition: ease 0.3s;
 }
@@ -167,11 +167,11 @@
     -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
 }
- 
+
 @-webkit-keyframes slideme {
     0% { left: -30px; margin-left: 0px; }
     30% { left: 110%; margin-left: 80px; }
-    100% { left: 110%; margin-left: 80px; } 
+    100% { left: 110%; margin-left: 80px; }
 }
 
 .icon-control{
@@ -206,7 +206,7 @@
 
 .callback-bt .text-call{
         height:68px;
-        width:68px;        
+        width:68px;
         border-radius:100%;
         position:relative;
         overflow:hidden;
@@ -227,25 +227,25 @@
     font-family: 'montserrat', Arial, Helvetica, sans-serif;
 }
 
-.callback-bt .text-call:hover span {
-    opacity: 1;
-        font-size: 11px;
-}
-.callback-bt:hover i {
-    display:none;
-}
+// .callback-bt .text-call:hover span {
+//     opacity: 1;
+//         font-size: 11px;
+// }
+// .callback-bt:hover i {
+//     display:none;
+// }
 
-.callback-bt:hover {
-        z-index:1;
-        background:#fff;
-        color:transparent;
-        transition:.3s;
-}
-.callback-bt:hover i {
-        color:#38a3fd;
-        font-size:40px;
-        transition:.3s;
-}
+// .callback-bt:hover {
+//         z-index:1;
+//         background:#fff;
+//         color:transparent;
+//         transition:.3s;
+// }
+// .callback-bt:hover i {
+//         color:#38a3fd;
+//         font-size:40px;
+//         transition:.3s;
+// }
 .callback-bt i {
         color:#fff;
         font-size:34px;
@@ -429,7 +429,7 @@
 
 .email-bt .text-call{
         height:68px;
-        width:68px;        
+        width:68px;
         border-radius:50%;
         position:relative;
         overflow:hidden;
@@ -450,24 +450,24 @@
     font-family: 'montserrat', Arial, Helvetica, sans-serif;
 }
 
-.email-bt .text-call:hover span {
-    opacity: 1;
-        font-size: 11px;
-}
-.email-bt:hover i {
-    display:none;
-}
+// .email-bt .text-call:hover span {
+//     opacity: 1;
+//         font-size: 11px;
+// }
+// .email-bt:hover i {
+//     display:none;
+// }
 
-.email-bt:hover {
-        z-index:1;
-        background:#fff;
-        transition:.3s;
-}
-.email-bt:hover i {
-        color:#38a3fd;
-        font-size:40px;
-        transition:.3s;
-}
+// .email-bt:hover {
+//         z-index:1;
+//         background:#fff;
+//         transition:.3s;
+// }
+// .email-bt:hover i {
+//         color:#38a3fd;
+//         font-size:40px;
+//         transition:.3s;
+// }
 .email-bt i {
         color:#fff;
         font-size:29px;
