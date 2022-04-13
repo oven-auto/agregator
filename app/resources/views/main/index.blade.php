@@ -59,7 +59,6 @@
 						<div type="" class="callback-bt" >
 						    <a class="text-call" href="tel: +78212288588">
 						        <i class="fa fa-phone"></i>
-						        <span>Заказать<br>звонок</span>
 						    </a>
 						</div>
 					</div>
@@ -68,7 +67,6 @@
 						<div type="" class="email-bt" data-url="{{route('ajax.show.modal',['brand'=>'renault'])}}">
 						    <div class="text-call">
 						        <i class="fa fa-envelope" aria-hidden="true"></i>
-						        <span>Обратная<br>связь</span>
 						    </div>
 						</div>
 					</div>
@@ -116,7 +114,6 @@
 						<div type="" class="callback-bt">
 						    <a class="text-call" href="tel: +78212288588">
 						        <i class="fa fa-phone"></i>
-						        <span>Заказать<br>звонок</span>
 						    </a>
 						</div>
 					</div>
@@ -125,7 +122,6 @@
 						<div type="" class="email-bt" data-url="{{route('ajax.show.modal',['brand'=>'lada'])}}">
 						    <div class="text-call">
 						        <i class="fa fa-envelope" aria-hidden="true"></i>
-						        <span>Обратная<br>связь</span>
 						    </div>
 						</div>
 					</div>
