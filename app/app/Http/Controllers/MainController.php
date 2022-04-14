@@ -11,7 +11,7 @@ class MainController extends Controller
     {
     	$actionLinks = json_decode(file_get_contents('http://promo.oven-auto.ru/content/publicaction'));
     	$actionLinks = (Array) $actionLinks;
-        
+
     	return view('main.index',compact('actionLinks'));
     }
 
@@ -44,12 +44,12 @@ class MainController extends Controller
 		$data['question'] = $question;
 
 		Mail::send('mails.to_market', $data, function($message) use ($to_name, $to_email1) {
-		    $message->to($to_email, $to_name)->subject('Заявка с сайта oven-auto.ru');
+		    $message->to($to_email1, $to_name)->subject('Заявка с сайта oven-auto.ru');
 		    $message->from('oit@oven-auto.ru','Сайт oven-auto.ru');
 		});
 
 		Mail::send('mails.to_market', $data, function($message) use ($to_name, $to_email2) {
-		    $message->to($to_email, $to_name)->subject('Заявка с сайта oven-auto.ru');
+		    $message->to($to_email2, $to_name)->subject('Заявка с сайта oven-auto.ru');
 		    $message->from('oit@oven-auto.ru','Сайт oven-auto.ru');
 		});
 
@@ -62,11 +62,11 @@ class MainController extends Controller
 }
 
 
-/*<IfModule mod_rewrite.c>    
+/*<IfModule mod_rewrite.c>
 Options +FollowSymLinks
-RewriteEngine on     
-RewriteRule ^(.*)$ app/public/$1 [L]     
-RewriteCond %{REQUEST_FILENAME} !-d     
-RewriteCond %{REQUEST_FILENAME} !-f     
-RewriteRule ^ index.php [L] 
+RewriteEngine on
+RewriteRule ^(.*)$ app/public/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
 </IfModule>*/
