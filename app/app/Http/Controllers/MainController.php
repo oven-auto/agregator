@@ -45,12 +45,12 @@ class MainController extends Controller
 
 		Mail::send('mails.to_market', $data, function($message) use ($to_name, $email1) {
 		    $message->to($email1, $to_name)->subject('Заявка с сайта oven-auto.ru');
-		    $message->from('oit@oven-auto.ru','Сайт oven-auto.ru');
+		    $message->from('promo@oven-auto.ru','Сайт oven-auto.ru');
 		});
 
 		Mail::send('mails.to_market', $data, function($message) use ($to_name, $email2) {
 		    $message->to($email2, $to_name)->subject('Заявка с сайта oven-auto.ru');
-		    $message->from('oit@oven-auto.ru','Сайт oven-auto.ru');
+		    $message->from('promo@oven-auto.ru','Сайт oven-auto.ru');
 		});
 
 		$message = 'Ваша заявка принята.';
