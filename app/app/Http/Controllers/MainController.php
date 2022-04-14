@@ -30,7 +30,8 @@ class MainController extends Controller
     	$question = $request->get('userquestion');
 
     	$to_name = 'OvenAvto';
-		$to_email = 'advs@oven-auto.ru';
+		$email1 = 'advs@oven-auto.ru';
+		$email2 = 'trade_dir@oven-auto.ru';
 
 		$data['name'] =$name;
 		$data['phone'] = sprintf("%s (%s) %s-%s-%s",
@@ -42,10 +43,16 @@ class MainController extends Controller
 		);
 		$data['question'] = $question;
 
-		Mail::send('mails.to_market', $data, function($message) use ($to_name, $to_email) {
+		Mail::send('mails.to_market', $data, function($message) use ($to_name, $to_email1) {
 		    $message->to($to_email, $to_name)->subject('Заявка с сайта oven-auto.ru');
 		    $message->from('oit@oven-auto.ru','Сайт oven-auto.ru');
 		});
+
+		Mail::send('mails.to_market', $data, function($message) use ($to_name, $to_email2) {
+		    $message->to($to_email, $to_name)->subject('Заявка с сайта oven-auto.ru');
+		    $message->from('oit@oven-auto.ru','Сайт oven-auto.ru');
+		});
+
 		$message = 'Ваша заявка принята.';
 		return response()->json([
 			'status'=>1,
