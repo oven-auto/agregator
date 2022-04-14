@@ -63,13 +63,13 @@
 						</div>
 					</div>
 
-					<div class="col">
+					{{-- <div class="col">
 						<div type="" class="email-bt" data-url="{{route('ajax.show.modal',['brand'=>'renault'])}}">
 						    <div class="text-call">
 						        <i class="fa fa-envelope" aria-hidden="true"></i>
 						    </div>
 						</div>
-					</div>
+					</div> --}}
 				</div>
 			</div>
 			<div class="col d-block d-sm-none"><div style="width: 100%;background: #ddd;height: 1px;" class="mt-3 "></div></div>
@@ -118,13 +118,13 @@
 						</div>
 					</div>
 
-					<div class="col">
+					{{-- <div class="col">
 						<div type="" class="email-bt" data-url="{{route('ajax.show.modal',['brand'=>'lada'])}}">
 						    <div class="text-call">
 						        <i class="fa fa-envelope" aria-hidden="true"></i>
 						    </div>
 						</div>
-					</div>
+					</div> --}}
 				</div>
 
 			</div>
